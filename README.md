@@ -111,7 +111,7 @@ B --> C3[Update Game]
 B --> C4[Delete Game]
 B --> C5[Sell Game]
 B --> C6[Exit]
-C1 -->B
+C1 --> B
 C2 --> B
 C3 --> B
 C4 --> B
