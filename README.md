@@ -105,17 +105,70 @@ The following flowchart summarizes the flow of the program:
 ```mermaid 
 graph TD
 A[Start Program] --> B{Main Menu}
-B --> C1[Add Game]
-B --> C2[View Catalog]
-B --> C3[Update Game]
-B --> C4[Delete Game]
-B --> C5[Sell Game]
-B --> C6[Exit]
-C1 --> B
-C2 --> B
-C3 --> B
-C4 --> B
-C5 --> B
+A[Start Program] --> B{Run Loop};
+    B --> C[Main Menu];
+    C --> D{User Input};
+
+    D -- Add Game --> E[Add Game Sub-Menu];
+    E --> E1[Input Game Data];
+    E1 --> E2{Save Data?};
+    E2 -- Yes --> E3[Append Game to List];
+    E3 --> B;
+    E2 -- No --> E4[Cancel Add];
+    E4 --> B;
+
+    D -- Game Catalog --> F[Catalog Sub-Menu];
+    F --> F1[Show All Games];
+    F --> F2[Search by Game ID];
+    F --> F3[Filter by Category];
+    F1 --> B;
+    F2 --> B;
+    F3 --> B;
+
+    D -- Update Game --> G[Update Sub-Menu];
+    G --> G1[Input Game ID];
+    G1 --> G2{Game Found?};
+    G2 -- Yes --> G3[Choose Field to Edit];
+    G3 --> G4[Input New Value];
+    G4 --> G5{Confirm Edit?};
+    G5 -- Yes --> G6[Update Game];
+    G6 --> B;
+    G5 -- No --> G7[Cancel Update];
+    G7 --> B;
+    G2 -- No --> G8[Show Not Found];
+    G8 --> B;
+
+    D -- Delete Game --> H[Delete Sub-Menu];
+    H --> H1[Input Game ID];
+    H1 --> H2{Game Found?};
+    H2 -- Yes --> H3{Confirm Delete?};
+    H3 -- Yes --> H4[Delete Game];
+    H4 --> B;
+    H3 -- No --> H5[Cancel Delete];
+    H5 --> B;
+    H2 -- No --> H6[Show Not Found];
+    H6 --> B;
+
+    D -- Sell Game --> I[Sell Sub-Menu];
+    I --> I1[Input Game ID];
+    I1 --> I2{Game Found?};
+    I2 -- Yes --> I3[Input Quantity];
+    I3 --> I4{Enough Stock?};
+    I4 -- Yes --> I5{Confirm Sale?};
+    I5 -- Yes --> I6[Update Stock & Show Total];
+    I6 --> B;
+    I5 -- No --> I7[Cancel Sale];
+    I7 --> B;
+    I4 -- No --> I8[Show Not Enough Stock];
+    I8 --> B;
+    I2 -- No --> I9[Show Not Found];
+    I9 --> B;
+
+    D -- Exit --> J[Exit Program];
+    J --> K[End];
+
+    D -- Invalid --> L[Show Invalid Message];
+    L --> B;
 ```
 
 ## Author
