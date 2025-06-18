@@ -104,20 +104,21 @@ The following flowchart summarizes the flow of the program:
 
 ```mermaid 
 graph TD
-A[Start Program] --> B{Main Menu}
-A[Start Program] --> B{Run Loop};
+    A[Start Program] --> B{Run Loop};
     B --> C[Main Menu];
     C --> D{User Input};
 
+    %% Add Game Flow
     D -- Add Game --> E[Add Game Sub-Menu];
     E --> E1[Input Game Data];
     E1 --> E2{Save Data?};
-    E2 -- Yes --> E3[Append Game to List];
-    E3 --> B;
+    E2 -- Yes --> E3[Save to List];
     E2 -- No --> E4[Cancel Add];
+    E3 --> B;
     E4 --> B;
 
-    D -- Game Catalog --> F[Catalog Sub-Menu];
+    %% View Game Catalog
+    D -- Game Catalog --> F[Game Catalog Sub-Menu];
     F --> F1[Show All Games];
     F --> F2[Search by Game ID];
     F --> F3[Filter by Category];
@@ -125,49 +126,53 @@ A[Start Program] --> B{Run Loop};
     F2 --> B;
     F3 --> B;
 
-    D -- Update Game --> G[Update Sub-Menu];
+    %% Update Game Flow
+    D -- Update Game --> G[Update Game Sub-Menu];
     G --> G1[Input Game ID];
     G1 --> G2{Game Found?};
-    G2 -- Yes --> G3[Choose Field to Edit];
-    G3 --> G4[Input New Value];
-    G4 --> G5{Confirm Edit?};
-    G5 -- Yes --> G6[Update Game];
-    G6 --> B;
-    G5 -- No --> G7[Cancel Update];
+    G2 -- No --> G3[Show Not Found];
+    G2 -- Yes --> G4[Select Field to Edit];
+    G4 --> G5[Input New Value];
+    G5 --> G6{Confirm Update?};
+    G6 -- Yes --> G7[Update Data];
+    G6 -- No --> G8[Cancel Update];
+    G3 --> B;
     G7 --> B;
-    G2 -- No --> G8[Show Not Found];
     G8 --> B;
 
-    D -- Delete Game --> H[Delete Sub-Menu];
+    %% Delete Game Flow
+    D -- Delete Game --> H[Delete Game Sub-Menu];
     H --> H1[Input Game ID];
     H1 --> H2{Game Found?};
-    H2 -- Yes --> H3{Confirm Delete?};
-    H3 -- Yes --> H4[Delete Game];
-    H4 --> B;
-    H3 -- No --> H5[Cancel Delete];
+    H2 -- No --> H3[Show Not Found];
+    H2 -- Yes --> H4{Confirm Delete?};
+    H4 -- Yes --> H5[Delete Game];
+    H4 -- No --> H6[Cancel Delete];
+    H3 --> B;
     H5 --> B;
-    H2 -- No --> H6[Show Not Found];
     H6 --> B;
 
-    D -- Sell Game --> I[Sell Sub-Menu];
+    %% Sell Game Flow
+    D -- Sell Game --> I[Sell Game Sub-Menu];
     I --> I1[Input Game ID];
     I1 --> I2{Game Found?};
-    I2 -- Yes --> I3[Input Quantity];
-    I3 --> I4{Enough Stock?};
-    I4 -- Yes --> I5{Confirm Sale?};
-    I5 -- Yes --> I6[Update Stock & Show Total];
+    I2 -- No --> I3[Show Not Found];
+    I2 -- Yes --> I4[Input Quantity];
+    I4 --> I5{Enough Stock?};
+    I5 -- No --> I6[Show Stock Error];
+    I5 -- Yes --> I7{Confirm Sale?};
+    I7 -- Yes --> I8[Reduce Stock & Show Total];
+    I7 -- No --> I9[Cancel Sale];
+    I3 --> B;
     I6 --> B;
-    I5 -- No --> I7[Cancel Sale];
-    I7 --> B;
-    I4 -- No --> I8[Show Not Enough Stock];
     I8 --> B;
-    I2 -- No --> I9[Show Not Found];
     I9 --> B;
 
+    %% Exit & Invalid
     D -- Exit --> J[Exit Program];
     J --> K[End];
 
-    D -- Invalid --> L[Show Invalid Message];
+    D -- Invalid --> L[Show Invalid Input];
     L --> B;
 ```
 
