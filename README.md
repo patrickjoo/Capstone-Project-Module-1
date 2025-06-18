@@ -102,7 +102,20 @@ Each option leads to relevant submenus for more specific tasks.
 ## Flowchart
 The following flowchart summarizes the flow of the program:
 
-```mermaid graph TD A[Start Program] --> B{Main Menu} B --> C1[Add Game] B --> C2[View Catalog] B --> C3[Update Game] B --> C4[Delete Game] B --> C5[Sell Game] B --> C6[Exit] C1 --> B C2 --> B C3 --> B C4 --> B C5 --> B ```
+```mermaid 
+graph TD
+A[Start Program] --> B{Main Menu}
+B --> C1[Add Game]
+B --> C2[View Catalog]
+B --> C3[Update Game]
+B --> C4[Delete Game]
+B --> C5[Sell Game]
+B --> C6[Exit]
+C1 -->B
+C2 --> B
+C3 --> B
+C4 --> B
+C5 --> B ```
 
 ## Author
 Patrick Jonathan
