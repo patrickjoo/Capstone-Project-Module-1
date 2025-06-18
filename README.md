@@ -115,7 +115,8 @@ C1 --> B
 C2 --> B
 C3 --> B
 C4 --> B
-C5 --> B ```
+C5 --> B
+```
 
 ## Author
 Patrick Jonathan
