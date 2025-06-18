@@ -61,7 +61,7 @@ The application uses a list of dictionaries to store game data. Each game entry 
 }
 
 Accepted Categories:
--Nintendo
+- Nintendo
 - Playstation
 - Xbox
 ```
@@ -119,4 +119,4 @@ C5 --> B
 ```
 
 ## Author
-Patrick Jonathan
+Patrick Jonathan / patrickjoo
