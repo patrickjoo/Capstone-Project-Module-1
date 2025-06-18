@@ -79,7 +79,7 @@ The system is modularized into several functions, each responsible for specific 
 - `sellGame()`: Handles sales transaction and reduces stock.
 - `startMenu()`: Runs the main program loop.
 
-## How to Run
+## How to Use
   1. Save the Code: Save the Python source file as `Capstone Project_Patrick Jonathan.py`
 
   2. Open Terminal or Command Prompt: Navigate to the folder where the file is saved.
