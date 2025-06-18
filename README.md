@@ -159,7 +159,7 @@ graph TD
     I2 -- No --> I3[Show Not Found];
     I2 -- Yes --> I4[Input Quantity];
     I4 --> I5{Enough Stock?};
-    I5 -- No --> I6[Show Stock Error];
+    I5 -- No --> I6[Show Not Enough Stock];
     I5 -- Yes --> I7{Confirm Sale?};
     I7 -- Yes --> I8[Reduce Stock & Show Total];
     I7 -- No --> I9[Cancel Sale];
